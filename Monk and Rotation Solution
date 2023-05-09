@@ -1,0 +1,21 @@
+//Monk and Rotation
+#include <stdio.h>
+
+int main()
+{
+	int test_no, N, K, i,j;
+	// reading no. of test cases
+	scanf("%d", &test_no);
+	for(j=0; j<test_no; j++){
+		scanf("%d %d", &N, &K);  //reading size of array & no. of elements to rotate
+		int a[N];    		// declaring the array
+		for(i=0; i<N; i++)	// reading array
+			scanf("%d", &a[i]);
+		for(i=N-K; i<N; i++)
+			printf("%d ",a[i]); // printing first part of array
+		for(i=0; i<N-K; i++)
+			printf("%d ",a[i]); // printing 2nd part
+			printf("\n");
+	} 
+	return 0;
+}
