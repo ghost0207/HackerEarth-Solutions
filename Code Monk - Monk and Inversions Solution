@@ -1,20 +1,37 @@
 #include <stdio.h>
-int main()
-{
-	int rows, i, j, p, q, k, test_count, count=0;
-	scanf("%d", &test_count);
-	for(k=0; k<test_count; k++){
-		scanf("%d", &rows);
-		int a[rows][rows];
-		for(i=0; i<rows; i++)
-			for(j=0; j<rows; j++)
-				scanf("%d",&a[i][j]);
-		for(i=0; i<rows; i++)
-			for(j=0; j<rows; j++)
-				for(p=i; p<rows; p++)
-					for(q=j; q<rows; q++)
-						if(a[i][j]>a[p][q])
-							count++;
-		printf("%d\n", count);
-	}
+
+#define MAXN 1000
+
+int A[MAXN][MAXN];
+
+int count_inversions(int n, int m) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            for (int x = i; x < n; x++) {
+                for (int y = j; y < m; y++) {
+                    if (A[i][j] > A[x][y]) {
+                        count++;
+                    }
+                }
+            }
+        }
+    }
+    return count;
+}
+
+int main() {
+    int T;
+    scanf("%d", &T);
+    while (T--) {
+        int N;
+        scanf("%d", &N);
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                scanf("%d", &A[i][j]);
+            }
+        }
+        printf("%d\n", count_inversions(N, N));
+    }
+    return 0;
 }
